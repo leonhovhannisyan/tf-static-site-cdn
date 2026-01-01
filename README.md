@@ -66,8 +66,10 @@ This repository uses **GitHub Actions** to enforce Terraform quality and safety:
 
 ## Screenshots
 Github Actions CI green checks:
+<img width="1260" height="535" alt="image" src="https://github.com/user-attachments/assets/91e6a575-c787-4320-8b6b-02e191ae3338" />
 
 AWS CloudFront / site working screenshot:
+<img width="696" height="194" alt="image" src="https://github.com/user-attachments/assets/0b84f956-1d96-44ec-8dd8-47c6d34c5aff" />
 
 ---
 
