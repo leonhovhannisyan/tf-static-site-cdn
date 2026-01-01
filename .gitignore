@@ -6,5 +6,4 @@ override.tf
 override.tf.json
 terraform.tfvars
 *.tfvars
-.terraform.lock.hcl
 .DS_Store
