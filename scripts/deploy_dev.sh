@@ -22,4 +22,10 @@ aws s3 cp "${ROOT_DIR}/site/index.html" "s3://${BUCKET}/index.html" \
   --content-type "text/html" \
   --cache-control "no-cache, no-store, must-revalidate"
 
+CF_ID="$(cd "${ENV_DIR}" && terraform output -raw cloudfront_distribution_id)"
+
+echo "Creating CloudFront invalidation..."
+aws cloudfront create-invalidation --distribution-id "${CF_ID}" --paths "/*" >/dev/null
+echo "Invalidation requested."
+
 echo "Done."
