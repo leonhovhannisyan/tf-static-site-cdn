@@ -32,7 +32,7 @@ User → CloudFront (HTTPS)
 
 ## Live demo (dev environment)
 **CloudFront URL:**
-
+Live demo URL may change after redeploy; get the current one via terraform -chdir=envs/dev output -raw cloudfront_url
 ```
 https://d23b56g0uketc9.cloudfront.net
 ```
@@ -82,7 +82,8 @@ terraform apply
 
 Deploy site content:
 ```
-aws s3 sync ./site s3://${bucket-name}
+BUCKET=$(terraform -chdir=envs/dev output -raw bucket_name)
+aws s3 sync ./site "s3://${BUCKET}/" --delete --exact-timestamps
 ```
 
 Destroy when finished:
@@ -91,7 +92,11 @@ terraform destroy
 ```
 
 ---
-
+## Security
+- S3 bucket is private
+- Access only via CloudFront OAC
+- OIDC used (no long-lived AWS keys)
+---
 ## Notes
 - No custom domain or Route53 is used to avoid fixed monthly costs
 - Designed to be safe for AWS Free Tier / credit-based accounts
